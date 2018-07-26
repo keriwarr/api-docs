@@ -10,11 +10,11 @@ A Group represents a collection of users who share expenses together. For exampl
 {
   "groups":[
     // Non-group expenses are listed in a group with id 0
-    {  
+    {
       "id":0,
       "name":"Non-group expenses",
       "updated_at": "2017-08-30T20:31:51Z", //<current time in UTC>
-      "members":[ 
+      "members":[
         {
             "id": 1,
             "first_name": "Ada",
@@ -26,29 +26,29 @@ A Group represents a collection of users who share expenses together. For exampl
             },
             "email": "ada@example.com",
             "registration_status": "confirmed",          //'dummy', 'invited', or 'confirmed'
-            "balance":[  
-               {  
+            "balance":[
+               {
                   "currency_code":"AED",
                   "amount":"0.0"
                },
-               {  
+               {
                   "currency_code":"ALL",
                   "amount":"0.0"
                },
-               {  
+               {
                   "currency_code":"EUR",
                   "amount":"-5.0"
                },
-               {  
+               {
                   "currency_code":"USD",
                   "amount":"3730.5"
                } //, ...
             ]
-         } // , ...  
-      ], 
+         } // , ...
+      ],
       "simplify_by_default":false,
-      "original_debts":[  
-         {  
+      "original_debts":[
+         {
             "from": 12345,          // user_id
             "to": 54321,            // user_id
             "amount":"414.5",       // amount as a decimal string
@@ -56,22 +56,22 @@ A Group represents a collection of users who share expenses together. For exampl
          } // , ...
       ]
     },
-    {  
+    {
       "id":3018312,
       "name":"a test group",
       "updated_at":"2017-08-30T20:31:51Z",
-      "members":[ /* <User object> , <User object>, ... */ ], 
+      "members":[ /* <User object> , <User object>, ... */ ],
       "simplify_by_default":false,
-      "original_debts":[  
-         {  
+      "original_debts":[
+         {
             "from": 12345,          // user_id
             "to": 54321,            // user_id
             "amount":"414.5",       // amount as a decimal string
             "currency_code":"USD"   // three-letter currency code
          } // , ...
       ],
-      "simplified_debts":[  
-         {  
+      "simplified_debts":[
+         {
             "from": 12345,          // user_id
             "to": 54321,            // user_id
             "amount":"414.5",       // amount as a decimal string
@@ -96,22 +96,22 @@ Returns list of all groups that the current_user belongs to
 ```json
 {
   "group":
-    {  
+    {
       "id":3018312,
       "name":"a test group",
       "updated_at":"2017-08-30T20:31:51Z",
-      "members":[ /* <User object> , <User object>, ... */ ], 
+      "members":[ /* <User object> , <User object>, ... */ ],
       "simplify_by_default":false,
-      "original_debts":[  
-         {  
+      "original_debts":[
+         {
             "from": 12345,          // user_id
             "to": 54321,            // user_id
             "amount":"414.5",       // amount as a decimal string
             "currency_code":"USD"   // three-letter currency code
          } // , ...
       ],
-      "simplified_debts":[  
-         {  
+      "simplified_debts":[
+         {
             "from": 12345,          // user_id
             "to": 54321,            // user_id
             "amount":"414.5",       // amount as a decimal string
@@ -136,11 +136,11 @@ Returns information about the specified group (as long as the current user has a
 ```json
 {
   "group":
-    {  
+    {
       "id":3018312,
       "name":"a test group",
       "updated_at":"2017-08-30T20:31:51Z",
-      "members":[ /* <User object> , <User object>, ... */ ], 
+      "members":[ /* <User object> , <User object>, ... */ ],
       "simplify_by_default":false,
       "original_debts":[],
       "simplified_debts":[],
@@ -170,10 +170,10 @@ name | String | Group name
 whiteboard | String | Text to display on the group whiteboard
 group_type | String | What the group is being used for (apartment, trip, couple, etc.)
 simplify_by_default| Boolean | Turn on simplify debts?
-users__0__first_name | String | Add a user's first name
-users__0__last_name | String | Add a user's last name
-users__0__email | String | Add a user's email
-users__1__user_id | Integer | Add an existing user by id
+users\_\_0\_\_first_name | String | Add a user's first name
+users\_\_0\_\_last_name | String | Add a user's last name
+users\_\_0\_\_email | String | Add a user's email
+users\_\_1\_\_user_id | Integer | Add an existing user by id
 
 ## delete_group/:id
 
@@ -195,11 +195,14 @@ Delete an existing group. Destroys all associated records (expenses, etc.)
 > Example Response:
 
 ```json
+{
+  "success": true // or false
+}
 ```
 
-``
+`POST https://secure.splitwise.com/api/v3.0/undelete_group/:id`
 
-Desc: 
+Desc:
 
 ## add_user_to_group
 
@@ -222,7 +225,7 @@ Add a user to a group
 
 Parameter | Type | Description
 --------- | ---- | -----------
-group_id | Integer | Existing group to add the user to 
+group_id | Integer | Existing group to add the user to
 first_name | String | Add a user's first name
 last_name | String | Add a user's last name
 email | String | Add a user's email
